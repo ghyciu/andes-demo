@@ -7,9 +7,10 @@ import styles from './TagFilter.module.css';
 interface TagFilterProps {
   tags: Tag[];
   onTagSelect: (tagName: TagName) => void;
+  count: number;
 }
 
-const TagFilter: React.FC<TagFilterProps> = ({ tags, onTagSelect }) => {
+const TagFilter: React.FC<TagFilterProps> = ({ tags, onTagSelect, count }) => {
   const [selectedTag, setSelectedTag] = useState<TagName | null>(null);
 
   const onSelect = (tagName: TagName) => {
@@ -20,7 +21,7 @@ const TagFilter: React.FC<TagFilterProps> = ({ tags, onTagSelect }) => {
   return (
     <div className={styles.tagFilter}>
       {tags.map((tag, index) => (
-        <TagFilterItem key={`tag-${index}`} tag={tag} isSelected={selectedTag === tag.name} onSelect={onSelect} />
+        <TagFilterItem key={`tag-${index}`} tag={tag} isSelected={selectedTag === tag.name} onSelect={onSelect} count={count} />
       ))}
     </div>
   );

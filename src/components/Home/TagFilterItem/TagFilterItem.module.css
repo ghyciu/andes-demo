@@ -1,9 +1,10 @@
 .tagFilterItem {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -28,4 +29,16 @@
 
 .tagFilterItem.selected span {
   color: #0077b6;
+}
+
+.tagFilterItem.selected .count {
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  font-size: 0.7rem;
+  background-color: #0077b6;
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: white;
+  font-weight: 600;
 }

@@ -28,8 +28,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="root-home">
-      Home Page Component
-      <TagFilter tags={TAGS} onTagSelect={onTagSelect} />
+      <TagFilter tags={TAGS} onTagSelect={onTagSelect} count={gameCards.length} />
       <GameCards gameCards={gameCards} isLoading={isGameCardsLoading} />
     </div>
   );
