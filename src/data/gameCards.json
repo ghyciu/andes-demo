@@ -1,11 +1,26 @@
 [
   {
-    "name": "Game 1"
+    "name": "Game A",
+    "imageURL": "/assets/images/thumb/gameA.png"
   },
   {
-    "name": "Game 2"
+    "name": "Game B",
+    "imageURL": "/assets/images/thumb/gameB.png"
   },
   {
-    "name": "Game 3"
+    "name": "Game C",
+    "imageURL": "/assets/images/thumb/gameC.png"
+  },
+  {
+    "name": "Game D",
+    "imageURL": "/assets/images/thumb/gameD.png"
+  },
+  {
+    "name": "Game E",
+    "imageURL": "/assets/images/thumb/gameE.png"
+  },
+  {
+    "name": "Game F",
+    "imageURL": "/assets/images/thumb/gameF.png"
   }
 ]
