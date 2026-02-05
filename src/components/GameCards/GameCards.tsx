@@ -1,5 +1,5 @@
 import GameCardsProps from './GameCards.types';
-import GameCard from './GameCard';
+import GameCard from '../GameCard/GameCard';
 
 import styles from './GameCards.module.css';
 

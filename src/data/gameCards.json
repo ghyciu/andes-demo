@@ -1,26 +1,32 @@
 [
   {
     "name": "Game A",
-    "imageURL": "/assets/images/thumb/gameA.png"
+    "imageURL": "/assets/images/thumb/gameA.png",
+    "provider": "Provider A"
   },
   {
     "name": "Game B",
-    "imageURL": "/assets/images/thumb/gameB.png"
+    "imageURL": "/assets/images/thumb/gameB.png",
+    "provider": "Provider A"
   },
   {
     "name": "Game C",
-    "imageURL": "/assets/images/thumb/gameC.png"
+    "imageURL": "/assets/images/thumb/gameC.png",
+    "provider": "Provider B"
   },
   {
     "name": "Game D",
-    "imageURL": "/assets/images/thumb/gameD.png"
+    "imageURL": "/assets/images/thumb/gameD.png",
+    "provider": "Provider B"
   },
   {
     "name": "Game E",
-    "imageURL": "/assets/images/thumb/gameE.png"
+    "imageURL": "/assets/images/thumb/gameE.png",
+    "provider": "Provider C"
   },
   {
     "name": "Game F",
-    "imageURL": "/assets/images/thumb/gameF.png"
+    "imageURL": "/assets/images/thumb/gameF.png",
+    "provider": "Provider C"
   }
 ]

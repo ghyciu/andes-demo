@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import GameCards from '../components/GameCards/GameCards';
-import GameCard from '../components/GameCards/GameCard.types';
+import GameCard from '../components/GameCard/GameCard.types';
 import getGameCards from '../utils/getGameCards';
 
 const Home: React.FC = () => {
