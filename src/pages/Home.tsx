@@ -8,18 +8,21 @@ import TagFilter from '../components/Home/TagFilter/TagFilter';
 import { TAGS, TagName } from '../components/Home/Tag.types';
 
 const Home: React.FC = () => {
+  const [isGameCardsLoading, setIsGameCardsLoading] = useState(true);
   const [gameCards, setGameCards] = useState<GameCard[]>([]);
 
   useEffect(() => {
     getGameCards().then((data: GameCard[]) => {
+      setIsGameCardsLoading(false);
       setGameCards(data);
     });
   }, []);
 
   const onTagSelect = (tagName: TagName) => {
-    setGameCards([]);
+    setIsGameCardsLoading(true);
     getGameCardsByTag(tagName).then((data: GameCard[]) => {
       setGameCards(data);
+      setIsGameCardsLoading(false);
     });
   };
 
@@ -27,7 +30,7 @@ const Home: React.FC = () => {
     <div className="root-home">
       Home Page Component
       <TagFilter tags={TAGS} onTagSelect={onTagSelect} />
-      <GameCards gameCards={gameCards} />
+      <GameCards gameCards={gameCards} isLoading={isGameCardsLoading} />
     </div>
   );
 };
