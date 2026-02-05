@@ -1,6 +1,6 @@
 import gameCardsData from '../data/gameCards.json';
-import GameCard from '../components/GameCard/GameCard.types';
-import { PROVIDERS, ProviderName } from '../components/GameCard/Provider.types';
+import GameCard from '../components/Home/GameCard/GameCard.types';
+import { PROVIDERS, ProviderName } from '../components/Home/Provider.types';
 
 // Helper to check if the passed value is a valid Provider
 function isValidProvider(value: any): value is ProviderName {
@@ -9,15 +9,17 @@ function isValidProvider(value: any): value is ProviderName {
 
 // Maps JSON data to GameCard type - used to correct errors in backend (i.e. missing fields)
 function mapJsonToGameCard(json: any): GameCard {
-  let provider = json.gameProvider;
+  // Validates provider field and assigns unknown provider if invalid or missing
+  let provider = json.provider;
   if (!isValidProvider(provider)) {
-    provider = 'Unknown Company';
+    provider = 'Unknown Provider';
   }
 
   return {
     name: json.name || 'Unknown Game',
     imageURL: json.imageURL || './images/default.png',
-    provider: provider
+    provider: provider,
+    tags: json.tags || []
   };
 }
 
