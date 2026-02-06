@@ -2,29 +2,44 @@ import React, { useEffect, useState } from 'react';
 
 import GameCards from '../components/Home/GameCards/GameCards';
 import GameCard from '../components/Home/GameCard/GameCard.types';
-import { getGameCards, getGameCardsByTag } from '../utils/getGameCards';
+import { getGameCards, getGameCardsByTag, getGameCardsByTagAndProvider } from '../utils/getGameCards';
 
 import ProviderFilter from '../components/Home/ProviderFilter/ProviderFilter';
-import { PROVIDERS } from '../components/Home/Provider.types';
+import { PROVIDERS, ProviderName } from '../components/Home/Provider.types';
 
 import TagFilter from '../components/Home/TagFilter/TagFilter';
 import { TAGS, TagName } from '../components/Home/Tag.types';
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedTag, setSelectedTag] = useState<TagName | null>(null);
   const [gameCards, setGameCards] = useState<GameCard[]>([]);
+  const [gameCardsByTag, setGameCardsByTag] = useState<GameCard[]>([]);
 
+  // Fetches all game cards without any filters
   const fetchGameCards = async () => {
     setIsLoading(true);
     getGameCards().then((data: GameCard[]) => {
       setGameCards(data);
+      setGameCardsByTag(data);
       setIsLoading(false);
     });
   };
 
+  // Fetches game cards filtered by the selected tag
   const fetchGameCardsByTag = async (tagName: TagName) => {
     setIsLoading(true);
     getGameCardsByTag(tagName).then((data: GameCard[]) => {
+      setGameCards(data);
+      setGameCardsByTag(data);
+      setIsLoading(false);
+    });
+  };
+
+  // Fetches game cards filtered by both the selected tag and provider
+  const fetchGameCardsByProvider = async (providerName: ProviderName) => {
+    setIsLoading(true);
+    getGameCardsByTagAndProvider(selectedTag, providerName).then((data: GameCard[]) => {
       setGameCards(data);
       setIsLoading(false);
     });
@@ -37,15 +52,21 @@ const Home: React.FC = () => {
   const onTagSelect = (tagName: TagName) => {
     if (tagName === 'Home') {
       fetchGameCards();
+      setSelectedTag(null);
       return;
     }
     fetchGameCardsByTag(tagName);
+    setSelectedTag(tagName);
+  };
+
+  const onProviderSelect = (providerName: ProviderName) => {
+    fetchGameCardsByProvider(providerName);
   };
 
   return (
     <div className="root-home">
-      <ProviderFilter providers={PROVIDERS} gameCards={gameCards} />
-      <TagFilter tags={TAGS} onTagSelect={onTagSelect} count={gameCards.length} isLoading={isLoading} />
+      <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
+      <TagFilter tags={TAGS} count={gameCards.length} isLoading={isLoading} onTagSelect={onTagSelect} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />
     </div>
   );

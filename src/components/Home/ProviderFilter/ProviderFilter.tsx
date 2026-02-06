@@ -8,21 +8,20 @@ import styles from './ProviderFilter.module.css';
 interface ProviderFilterProps {
   providers: Provider[];
   gameCards: GameCard[];
+  onProviderSelect: (providerName: ProviderName) => void;
 }
 
-const ProviderFilter: React.FC<ProviderFilterProps> = ({ providers, gameCards }) => {
+const ProviderFilter: React.FC<ProviderFilterProps> = ({ providers, gameCards, onProviderSelect }) => {
   const [selectedProvider, setSelectedProvider] = useState<ProviderName | null>(null);
-
-  const activeProviderNames = Array.from(new Set(gameCards.map(card => card.provider)));
-  const filteredProviders = providers.filter(provider => activeProviderNames.includes(provider.name));
 
   const onSelect = (providerName: ProviderName) => {
     setSelectedProvider(providerName);
+    onProviderSelect(providerName);
   };
 
   return (
     <div className={styles.providerFilter}>
-      {filteredProviders.map((provider, index) => (
+      {providers.map((provider, index) => (
         <ProviderFilterItem
           key={`provider-${index}`}
           provider={provider}

@@ -51,11 +51,25 @@ export function getGameCards(): Promise<GameCard[]> {
   });
 }
 
-// Simulates an asynchronous fetch of game cards filtered by a specific tag
+// Simulates an asynchronous fetch of game cards filtered by tag
 export function getGameCardsByTag(tagName: TagName): Promise<GameCard[]> {
   return new Promise(resolve => {
     setTimeout(() => {
       const filteredCards = (gameCardsData as any[]).filter(card => card.tags.includes(tagName));
+      resolve(filteredCards.map(mapJsonToGameCard));
+    }, LOADING_DELAY_MS);
+  });
+}
+
+// Simulates an asynchronous fetch of game cards filtered by tag and provider
+export function getGameCardsByTagAndProvider(tagName: TagName | null, providerName: ProviderName): Promise<GameCard[]> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const filteredCards = (gameCardsData as any[]).filter(card => {
+        const matchesTag = tagName ? card.tags.includes(tagName) : true;
+        const matchesProvider = card.provider === providerName;
+        return matchesTag && matchesProvider;
+      });
       resolve(filteredCards.map(mapJsonToGameCard));
     }, LOADING_DELAY_MS);
   });

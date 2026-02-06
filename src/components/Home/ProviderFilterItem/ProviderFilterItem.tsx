@@ -13,6 +13,8 @@ const ProviderFilterItem: React.FC<ProviderFilterItemProps> = ({ provider, count
     onSelect(provider.name);
   };
 
+  if (count === 0) return null;
+
   return (
     <div className={`${styles.providerItem} ${isSelected ? styles.selected : ''}`} onClick={handleClick}>
       <img src={provider.imageURL} alt={provider.name} className={styles.providerImage} />
