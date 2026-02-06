@@ -8,28 +8,41 @@ import TagFilter from '../components/Home/TagFilter/TagFilter';
 import { TAGS, TagName } from '../components/Home/Tag.types';
 
 const Home: React.FC = () => {
-  const [isGameCardsLoading, setIsGameCardsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [gameCards, setGameCards] = useState<GameCard[]>([]);
 
-  useEffect(() => {
+  const fetchGameCards = async () => {
+    setIsLoading(true);
     getGameCards().then((data: GameCard[]) => {
-      setIsGameCardsLoading(false);
       setGameCards(data);
+      setIsLoading(false);
     });
+  };
+
+  const fetchGameCardsByTag = async (tagName: TagName) => {
+    setIsLoading(true);
+    getGameCardsByTag(tagName).then((data: GameCard[]) => {
+      setGameCards(data);
+      setIsLoading(false);
+    });
+  };
+
+  useEffect(() => {
+    fetchGameCards();
   }, []);
 
   const onTagSelect = (tagName: TagName) => {
-    setIsGameCardsLoading(true);
-    getGameCardsByTag(tagName).then((data: GameCard[]) => {
-      setGameCards(data);
-      setIsGameCardsLoading(false);
-    });
+    if (tagName === 'Home') {
+      fetchGameCards();
+      return;
+    }
+    fetchGameCardsByTag(tagName);
   };
 
   return (
     <div className="root-home">
-      <TagFilter tags={TAGS} onTagSelect={onTagSelect} count={gameCards.length} />
-      <GameCards gameCards={gameCards} isLoading={isGameCardsLoading} />
+      <TagFilter tags={TAGS} onTagSelect={onTagSelect} count={gameCards.length} isLoading={isLoading} />
+      <GameCards gameCards={gameCards} isLoading={isLoading} />
     </div>
   );
 };

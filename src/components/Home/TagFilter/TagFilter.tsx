@@ -6,11 +6,12 @@ import styles from './TagFilter.module.css';
 
 interface TagFilterProps {
   tags: Tag[];
-  onTagSelect: (tagName: TagName) => void;
   count: number;
+  isLoading: boolean;
+  onTagSelect: (tagName: TagName) => void;
 }
 
-const TagFilter: React.FC<TagFilterProps> = ({ tags, onTagSelect, count }) => {
+const TagFilter: React.FC<TagFilterProps> = ({ tags, count, isLoading, onTagSelect }) => {
   const [selectedTag, setSelectedTag] = useState<TagName | null>(null);
 
   const onSelect = (tagName: TagName) => {
@@ -18,11 +19,16 @@ const TagFilter: React.FC<TagFilterProps> = ({ tags, onTagSelect, count }) => {
     onTagSelect(tagName);
   };
 
+  const homeTag: Tag = { name: 'Home', imageURL: './assets/images/tags/home.png' };
+
   return (
     <div className={styles.tagFilter}>
-      {tags.map((tag, index) => (
-        <TagFilterItem key={`tag-${index}`} tag={tag} isSelected={selectedTag === tag.name} onSelect={onSelect} count={count} />
-      ))}
+      <TagFilterItem key="tag-home" tag={homeTag} count={count} isSelected={selectedTag === 'Home' || selectedTag === null} isLoading={isLoading} onSelect={onSelect} />
+      {tags
+        .filter(tag => tag.name !== 'Home')
+        .map((tag, index) => (
+          <TagFilterItem key={`tag-${index}`} tag={tag} count={count} isSelected={selectedTag === tag.name} isLoading={isLoading} onSelect={onSelect} />
+        ))}
     </div>
   );
 };

@@ -3,19 +3,20 @@ import styles from './TagFilterItem.module.css';
 
 interface TagFilterItemProps {
   tag: Tag;
-  isSelected: boolean;
-  onSelect: (tagName: TagName) => void;
   count: number;
+  isSelected: boolean;
+  isLoading: boolean;
+  onSelect: (tagName: TagName) => void;
 }
 
-const TagFilterItem: React.FC<TagFilterItemProps> = ({ tag, isSelected, onSelect, count }) => {
+const TagFilterItem: React.FC<TagFilterItemProps> = ({ tag, count, isSelected, isLoading, onSelect }) => {
   const handleClick = () => {
     onSelect(tag.name);
   };
 
   return (
     <div className={`${styles.tagFilterItem} ${isSelected ? styles.selected : ''}`} onClick={handleClick}>
-      {isSelected && <span className={styles.count}>{count}</span>}
+      {isSelected && !isLoading && <span className={styles.count}>{count}</span>}
       <img src={tag.imageURL} alt={`${tag.name} tag`} />
       <span>{tag.name}</span>
     </div>
