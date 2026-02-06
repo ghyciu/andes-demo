@@ -1,4 +1,4 @@
-interface Provider {
+export interface Provider {
   name: string;
   imageURL: string;
 }
@@ -6,15 +6,15 @@ interface Provider {
 export const PROVIDERS: Provider[] = [
   {
     name: 'Provider A',
-    imageURL: './images/providers/providerA.png'
+    imageURL: './assets/images/providers/providerA.webp'
   },
   {
     name: 'Provider B',
-    imageURL: './images/providers/providerB.png'
+    imageURL: './assets/images/providers/providerB.webp'
   },
   {
     name: 'Provider C',
-    imageURL: './images/providers/providerC.png'
+    imageURL: './assets/images/providers/providerC.webp'
   }
 ];
 
