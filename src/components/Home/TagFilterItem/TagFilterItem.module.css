@@ -17,7 +17,7 @@
 
 .tagFilterItem.selected img {
   opacity: 1;
-  filter: invert(25%) sepia(94%) saturate(1888%) hue-rotate(181deg) brightness(96%) contrast(101%);
+  filter: invert(41%) sepia(58%) saturate(2326%) hue-rotate(177deg) brightness(107%) contrast(102%);
 }
 
 .tagFilterItem span {
@@ -28,7 +28,7 @@
 }
 
 .tagFilterItem.selected span {
-  color: #0077b6;
+  color: var(--accent-color);
 }
 
 .tagFilterItem.selected .count {
@@ -36,7 +36,7 @@
   top: 4px;
   right: 0px;
   font-size: 0.7rem;
-  background-color: #0077b6;
+  background-color: var(--accent-color);
   padding: 2px 6px;
   border-radius: 2px;
   color: white;
