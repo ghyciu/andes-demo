@@ -8,13 +8,13 @@ import styles from './ProviderFilter.module.css';
 interface ProviderFilterProps {
   providers: Provider[];
   gameCards: GameCard[];
-  onProviderSelect: (providerName: ProviderName) => void;
+  onProviderSelect: (providerName: ProviderName | null) => void;
 }
 
 const ProviderFilter: React.FC<ProviderFilterProps> = ({ providers, gameCards, onProviderSelect }) => {
   const [selectedProvider, setSelectedProvider] = useState<ProviderName | null>(null);
 
-  const onSelect = (providerName: ProviderName) => {
+  const onSelect = (providerName: ProviderName | null) => {
     setSelectedProvider(providerName);
     onProviderSelect(providerName);
   };

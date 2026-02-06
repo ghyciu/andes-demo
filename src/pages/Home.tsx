@@ -49,6 +49,7 @@ const Home: React.FC = () => {
     fetchGameCards();
   }, []);
 
+  // Handles tag selection. If 'Home' is selected, fetches all cards.
   const onTagSelect = (tagName: TagName) => {
     if (tagName === 'Home') {
       fetchGameCards();
@@ -59,7 +60,16 @@ const Home: React.FC = () => {
     setSelectedTag(tagName);
   };
 
-  const onProviderSelect = (providerName: ProviderName) => {
+  // Handles provider selection. If provider is deselected, filters by current tag. If no tag is selected, fetches all cards
+  const onProviderSelect = (providerName: ProviderName | null) => {
+    if (providerName === null) {
+      if (selectedTag === null) {
+        fetchGameCards();
+        return;
+      }
+      fetchGameCardsByTag(selectedTag);
+      return;
+    }
     fetchGameCardsByProvider(providerName);
   };
 

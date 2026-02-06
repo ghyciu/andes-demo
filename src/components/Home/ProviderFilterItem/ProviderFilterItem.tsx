@@ -5,11 +5,16 @@ interface ProviderFilterItemProps {
   provider: Provider;
   count: number;
   isSelected: boolean;
-  onSelect: (providerName: ProviderName) => void;
+  onSelect: (providerName: ProviderName | null) => void;
 }
 
 const ProviderFilterItem: React.FC<ProviderFilterItemProps> = ({ provider, count, isSelected, onSelect }) => {
   const handleClick = () => {
+    if (isSelected) {
+      onSelect(null);
+      return;
+    }
+
     onSelect(provider.name);
   };
 
