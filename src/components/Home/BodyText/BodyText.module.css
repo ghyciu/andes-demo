@@ -1,0 +1,15 @@
+.section {
+  text-align: left;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.paragraph {
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #555;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.2rem;
+}
