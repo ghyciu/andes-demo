@@ -7,6 +7,7 @@ interface GameCard {
   imageURL: string;
   provider: ProviderName;
   tags: TagName[];
+  isFavorited: boolean;
 }
 
 export default GameCard;

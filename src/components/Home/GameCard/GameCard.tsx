@@ -7,7 +7,7 @@ import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 const GameCard: React.FC<GameCardProps> = gameCardProps => {
-  const [isFavorited, setIsFavorited] = React.useState(false);
+  const [isFavorited, setIsFavorited] = React.useState(gameCardProps.isFavorited);
 
   // Adds game card ID to favorites list in local storage
   const addToLocalStorage = () => {

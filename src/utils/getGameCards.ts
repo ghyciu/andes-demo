@@ -32,13 +32,17 @@ function mapJsonToGameCard(json: any): GameCard {
     }
   }
 
+  // Fetches local storage for isFavorited state
+  const isFavorited = JSON.parse(localStorage.getItem('favorites') || '[]').includes(json.id);
+
   return {
     id: json.id ? String(json.id) : Math.random().toString(36),
     name: json.name || 'Unknown Game',
     imageURL: json.imageURL || './images/default.png',
     provider: provider,
-    tags: tags
-  };
+    tags: tags,
+    isFavorited: isFavorited
+  } as GameCard;
 }
 
 const LOADING_DELAY_MS = 200;
