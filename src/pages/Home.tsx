@@ -12,6 +12,9 @@ import { PROVIDERS, ProviderName } from '../components/Home/Provider.types';
 import TagFilter from '../components/Home/TagFilter/TagFilter';
 import { TAGS, TagName } from '../components/Home/Tag.types';
 
+import Body from '../components/Home/Body/Body';
+import { BODY_TEXT } from '../components/Home/Body/Body.types';
+
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTag, setSelectedTag] = useState<TagName | null>(null);
@@ -81,6 +84,7 @@ const Home: React.FC = () => {
       <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
       <TagFilter tags={TAGS} count={gameCards.length} isLoading={isLoading} onTagSelect={onTagSelect} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />
+      <Body body={BODY_TEXT} />
     </div>
   );
 };
