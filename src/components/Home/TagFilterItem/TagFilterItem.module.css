@@ -25,6 +25,7 @@
   font-weight: 500;
   text-transform: uppercase;
   color: #777;
+  font-family: 'Poppins', sans-serif;
 }
 
 .tagFilterItem.selected span {

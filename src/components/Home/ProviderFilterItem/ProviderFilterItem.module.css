@@ -17,8 +17,9 @@
 }
 
 .providerCount {
-  font-size: 0.75rem;
-  color: #666;
+  font-size: 0.65rem;
+  color: #888;
+  font-family: 'Poppins', sans-serif;
 }
 
 .providerItem.selected {

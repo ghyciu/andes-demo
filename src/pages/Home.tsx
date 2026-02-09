@@ -14,6 +14,7 @@ import { TAGS, TagName } from '../components/Home/Tag.types';
 
 import Body from '../components/Home/Body/Body';
 import { BODY_TEXT } from '../components/Home/Body/Body.types';
+import FloatingTopBar from '../components/FloatingTopBar/FloatingTopBar';
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -80,6 +81,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="root-home">
+      <FloatingTopBar />
       <BannerCarrousel banners={BANNERS} />
       <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
       <TagFilter tags={TAGS} count={gameCards.length} isLoading={isLoading} onTagSelect={onTagSelect} />
