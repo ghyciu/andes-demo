@@ -33,6 +33,7 @@ function mapJsonToGameCard(json: any): GameCard {
   }
 
   return {
+    id: json.id ? String(json.id) : Math.random().toString(36),
     name: json.name || 'Unknown Game',
     imageURL: json.imageURL || './images/default.png',
     provider: provider,

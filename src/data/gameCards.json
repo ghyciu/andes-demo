@@ -1,35 +1,41 @@
 [
   {
+    "id": "gameA",
     "name": "Game A",
     "imageURL": "/assets/images/thumb/gameA.webp",
     "provider": "Provider A",
     "tags": ["New", "Popular", "Slots"]
   },
   {
+    "id": "gameB",
     "name": "Game B",
     "imageURL": "/assets/images/thumb/gameB.webp",
     "provider": "Provider A",
     "tags": ["New", "Popular", "Bingo"]
   },
   {
+    "id": "gameC",
     "name": "Game C",
     "imageURL": "/assets/images/thumb/gameC.webp",
     "provider": "Provider B",
     "tags": ["Popular", "Slots"]
   },
   {
+    "id": "gameD",
     "name": "Game D",
     "imageURL": "/assets/images/thumb/gameD.webp",
     "provider": "Provider B",
     "tags": ["Popular", "Bingo"]
   },
   {
+    "id": "gameE",
     "name": "Game E",
     "imageURL": "/assets/images/thumb/gameE.webp",
     "provider": "Provider C",
     "tags": ["Slots"]
   },
   {
+    "id": "gameF",
     "name": "Game F",
     "imageURL": "/assets/images/thumb/gameF.webp",
     "provider": "Provider C",

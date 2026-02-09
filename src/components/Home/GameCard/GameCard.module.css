@@ -11,3 +11,16 @@
   object-fit: cover;
   border-radius: 0.5rem;
 }
+
+.heartIcon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.heartIcon.favorited {
+  color: red;
+}
