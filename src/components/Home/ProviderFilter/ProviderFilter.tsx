@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 
-import { Provider, ProviderName } from '../Provider.types';
+import { ProviderName } from '../Provider.types';
+import ProviderFilterProps from './ProviderFilter.types';
 import ProviderFilterItem from '../ProviderFilterItem/ProviderFilterItem';
-import GameCard from '../GameCard/GameCard.types';
 import styles from './ProviderFilter.module.css';
-
-interface ProviderFilterProps {
-  providers: Provider[];
-  gameCards: GameCard[];
-  onProviderSelect: (providerName: ProviderName | null) => void;
-}
 
 const ProviderFilter: React.FC<ProviderFilterProps> = ({ providers, gameCards, onProviderSelect }) => {
   const [selectedProvider, setSelectedProvider] = useState<ProviderName | null>(null);

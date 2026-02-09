@@ -1,12 +1,6 @@
-import GameCardItem from '../GameCard/GameCard.types';
+import GameCardsProps from './GameCards.types';
 import GameCard from '../GameCard/GameCard';
-
 import styles from './GameCards.module.css';
-
-interface GameCardsProps {
-  gameCards: GameCardItem[];
-  isLoading: boolean;
-}
 
 const GameCards: React.FC<GameCardsProps> = ({ gameCards, isLoading }) => {
   if (isLoading) {

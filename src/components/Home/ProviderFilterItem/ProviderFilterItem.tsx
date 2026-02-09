@@ -1,12 +1,5 @@
-import { Provider, ProviderName } from '../Provider.types';
+import ProviderFilterItemProps from './ProviderFilterItem.types';
 import styles from './ProviderFilterItem.module.css';
-
-interface ProviderFilterItemProps {
-  provider: Provider;
-  count: number;
-  isSelected: boolean;
-  onSelect: (providerName: ProviderName | null) => void;
-}
 
 const ProviderFilterItem: React.FC<ProviderFilterItemProps> = ({ provider, count, isSelected, onSelect }) => {
   const handleClick = () => {
