@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import Banner from '../components/Home/Banner/Banner';
+import BannerCarrousel from '../components/Home/BannerCarrousel/BannerCarrousel';
+import { BANNERS } from '../components/Home/BannerCarrousel/Banner.types';
 
 import GameCards from '../components/Home/GameCards/GameCards';
 import GameCard from '../components/Home/GameCard/GameCard.types';
@@ -76,7 +77,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="root-home">
-      <Banner images={gameCards.map(card => card.imageURL)} />
+      <BannerCarrousel banners={BANNERS} />
       <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
       <TagFilter tags={TAGS} count={gameCards.length} isLoading={isLoading} onTagSelect={onTagSelect} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />

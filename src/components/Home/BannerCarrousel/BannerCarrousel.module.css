@@ -1,4 +1,4 @@
-.banner {
+.bannerCarrousel {
   display: flex;
   position: relative;
   height: 10rem;
@@ -10,14 +10,14 @@
   margin: 0.5rem 1rem;
 }
 
-.imageContainer {
+.banner {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.imageContainer img {
+.banner img {
   width: 100%;
   height: 10rem;
   object-fit: cover;
@@ -28,13 +28,13 @@
   top: 0;
 }
 
-.imageContainer img.visible {
+.banner img.visible {
   opacity: 1;
   position: relative;
   z-index: 1;
 }
 
-.imageContainer img.invisible {
+.banner img.invisible {
   opacity: 0;
   z-index: 0;
 }
