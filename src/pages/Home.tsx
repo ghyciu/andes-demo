@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+import Banner from '../components/Home/Banner/Banner';
+
 import GameCards from '../components/Home/GameCards/GameCards';
 import GameCard from '../components/Home/GameCard/GameCard.types';
 import { getGameCards, getGameCardsByTag, getGameCardsByTagAndProvider } from '../utils/getGameCards';
 
 import ProviderFilter from '../components/Home/ProviderFilter/ProviderFilter';
 import { PROVIDERS, ProviderName } from '../components/Home/Provider.types';
-
 import TagFilter from '../components/Home/TagFilter/TagFilter';
 import { TAGS, TagName } from '../components/Home/Tag.types';
 
@@ -75,6 +76,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="root-home">
+      <Banner images={gameCards.map(card => card.imageURL)} />
       <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
       <TagFilter tags={TAGS} count={gameCards.length} isLoading={isLoading} onTagSelect={onTagSelect} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />
