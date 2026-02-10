@@ -17,7 +17,7 @@
 
 .tagFilterItem.selected img {
   opacity: 1;
-  filter: invert(41%) sepia(58%) saturate(2326%) hue-rotate(177deg) brightness(107%) contrast(102%);
+  filter: var(--accent-color-filter);
 }
 
 .tagFilterItem span {

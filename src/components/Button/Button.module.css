@@ -1,0 +1,13 @@
+.button {
+  background-color: var(--accent-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.green {
+  background-color: var(--green);
+}

@@ -4,4 +4,6 @@
 
 :root {
   --accent-color: #00a6ff;
+  --accent-color-filter: invert(41%) sepia(58%) saturate(2326%) hue-rotate(177deg) brightness(107%) contrast(102%);
+  --green: #41bc2c;
 }

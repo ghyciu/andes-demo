@@ -9,9 +9,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
-.floatingTopBar .actions {
+.floatingTopBarLogo {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.5rem;
+}
+
+.floatingTopBarLogo svg {
+  height: 1.3rem;
+  filter: var(--accent-color-filter);
+}
+
+.floatingTopBarLogo img {
+  height: 1.3rem;
+}
+
+.floatingTopBarActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: row;
 }
