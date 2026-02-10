@@ -15,6 +15,8 @@ import { TAGS, TagName } from '../components/Home/Tag.types';
 import Body from '../components/Home/Body/Body';
 import { BODY_TEXT } from '../components/Home/Body/Body.types';
 import FloatingTopBar from '../components/FloatingTopBar/FloatingTopBar';
+import FloatingBottomBar from '../components/FloatingBottomBar/FloatingBottomBar';
+import { FLOATING_BOTTOM_BAR_ITEMS } from '../components/FloatingBottomBar/FloatingBottomBar.types';
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -87,6 +89,7 @@ const Home: React.FC = () => {
       <TagFilter tags={TAGS} count={gameCards.length} isLoading={isLoading} onTagSelect={onTagSelect} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />
       <Body body={BODY_TEXT} />
+      <FloatingBottomBar items={FLOATING_BOTTOM_BAR_ITEMS} />
     </div>
   );
 };
