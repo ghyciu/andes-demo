@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { ProviderName } from '../Provider.types';
 import ProviderFilterProps from './ProviderFilter.types';
-import ProviderFilterItem from '../ProviderFilterItem/ProviderFilterItem';
+import ProviderFilterItem from './ProviderFilterItem/ProviderFilterItem';
 import styles from './ProviderFilter.module.css';
 
 const ProviderFilter: React.FC<ProviderFilterProps> = ({ providers, gameCards, onProviderSelect }) => {

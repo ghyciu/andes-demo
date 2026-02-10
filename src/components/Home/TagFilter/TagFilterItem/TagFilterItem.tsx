@@ -1,4 +1,4 @@
-import Tag, { TagName } from '../Tag.types';
+import Tag, { TagName } from '../../Tag.types';
 import styles from './TagFilterItem.module.css';
 
 interface TagFilterItemProps {

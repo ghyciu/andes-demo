@@ -1,5 +1,5 @@
 import BodyProps from './Body.types';
-import BodyText from '../BodyText/BodyText';
+import BodyText from './BodyText/BodyText';
 import styles from './Body.module.css';
 
 const Body: React.FC<BodyProps> = ({ body }) => {

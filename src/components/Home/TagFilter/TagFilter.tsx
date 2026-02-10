@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Tag, { TagName } from '../Tag.types';
-import TagFilterItem from '../TagFilterItem/TagFilterItem';
+import TagFilterItem from './TagFilterItem/TagFilterItem';
 import styles from './TagFilter.module.css';
 
 interface TagFilterProps {

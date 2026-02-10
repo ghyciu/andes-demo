@@ -1,4 +1,4 @@
-import { Provider, ProviderName } from '../Provider.types';
+import { Provider, ProviderName } from '../../Provider.types';
 
 interface ProviderFilterItem {
   provider: Provider;

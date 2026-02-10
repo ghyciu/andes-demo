@@ -1,5 +1,5 @@
 import gameCardsData from '../data/gameCards.json';
-import GameCard from '../components/Home/GameCard/GameCard.types';
+import GameCard from '../components/Home/GameCards/GameCard/GameCard.types';
 import { PROVIDERS, ProviderName } from '../components/Home/Provider.types';
 import { TAGS, TagName } from '../components/Home/Tag.types';
 

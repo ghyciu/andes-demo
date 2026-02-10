@@ -1,4 +1,4 @@
-import BodyText, { Section, Paragraph } from '../BodyText/BodyText.types';
+import BodyText, { Section, Paragraph } from './BodyText/BodyText.types';
 
 interface Body {
   body: BodyText[];

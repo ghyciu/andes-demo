@@ -1,5 +1,5 @@
 import { Provider, ProviderName } from '../Provider.types';
-import GameCard from '../GameCard/GameCard.types';
+import GameCard from '../GameCards/GameCard/GameCard.types';
 
 interface ProviderFilter {
   providers: Provider[];

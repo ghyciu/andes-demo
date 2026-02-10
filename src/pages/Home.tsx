@@ -4,7 +4,7 @@ import BannerCarrousel from '../components/Home/BannerCarrousel/BannerCarrousel'
 import { BANNERS } from '../components/Home/BannerCarrousel/Banner.types';
 
 import GameCards from '../components/Home/GameCards/GameCards';
-import GameCard from '../components/Home/GameCard/GameCard.types';
+import GameCard from '../components/Home/GameCards/GameCard/GameCard.types';
 import { getGameCards, getGameCardsByTag, getGameCardsByTagAndProvider } from '../utils/getGameCards';
 
 import ProviderFilter from '../components/Home/ProviderFilter/ProviderFilter';
