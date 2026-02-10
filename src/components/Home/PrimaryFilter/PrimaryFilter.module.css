@@ -1,0 +1,13 @@
+.columnContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.primaryFilter {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+}

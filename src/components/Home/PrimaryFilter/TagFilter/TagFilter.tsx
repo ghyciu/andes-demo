@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 
-import Tag, { TagName } from '../Tag.types';
+import TagFilterProps from './TagFilter.types';
+import Tag, { TagName } from '../../Tag.types';
 import TagFilterItem from './TagFilterItem/TagFilterItem';
 import styles from './TagFilter.module.css';
-
-interface TagFilterProps {
-  tags: Tag[];
-  count: number;
-  isLoading: boolean;
-  onTagSelect: (tagName: TagName) => void;
-}
 
 const TagFilter: React.FC<TagFilterProps> = ({ tags, count, isLoading, onTagSelect }) => {
   const [selectedTag, setSelectedTag] = useState<TagName | null>(null);

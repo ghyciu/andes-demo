@@ -9,7 +9,7 @@ import { getGameCards, getGameCardsByTag, getGameCardsByTagAndProvider } from '.
 
 import ProviderFilter from '../components/Home/ProviderFilter/ProviderFilter';
 import { PROVIDERS, ProviderName } from '../components/Home/Provider.types';
-import TagFilter from '../components/Home/TagFilter/TagFilter';
+import TagFilter from '../components/Home/PrimaryFilter/TagFilter/TagFilter.types';
 import { TAGS, TagName } from '../components/Home/Tag.types';
 
 import Body from '../components/Home/Body/Body';
@@ -17,6 +17,7 @@ import { BODY_TEXT } from '../components/Home/Body/Body.types';
 import FloatingTopBar from '../components/FloatingTopBar/FloatingTopBar';
 import FloatingBottomBar from '../components/FloatingBottomBar/FloatingBottomBar';
 import { FLOATING_BOTTOM_BAR_ITEMS } from '../components/FloatingBottomBar/FloatingBottomBar.types';
+import PrimaryFilter from '../components/Home/PrimaryFilter/PrimaryFilter';
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -81,12 +82,19 @@ const Home: React.FC = () => {
     fetchGameCardsByProvider(providerName);
   };
 
+  const tagFilter: TagFilter = {
+    tags: TAGS,
+    count: gameCards.length,
+    isLoading: isLoading,
+    onTagSelect: onTagSelect
+  };
+
   return (
     <div className="root-home">
       <FloatingTopBar />
       <BannerCarrousel banners={BANNERS} />
       <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
-      <TagFilter tags={TAGS} count={gameCards.length} isLoading={isLoading} onTagSelect={onTagSelect} />
+      <PrimaryFilter tagFilter={tagFilter} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />
       <Body body={BODY_TEXT} />
       <FloatingBottomBar items={FLOATING_BOTTOM_BAR_ITEMS} />
