@@ -4,7 +4,7 @@ import SearchResults from './SearchResults/SearchResults';
 import styles from './SearchBar.module.css';
 import React, { useRef, useEffect } from 'react';
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch, results }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch, results, isVisible }) => {
   const [searchResultsVisible, setSearchResultsVisible] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -30,6 +30,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, results }) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div className={styles.searchBar} ref={searchBarRef}>

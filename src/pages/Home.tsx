@@ -17,6 +17,8 @@ import { BODY_TEXT } from '../components/Home/Body/Body.types';
 import FloatingTopBar from '../components/FloatingTopBar/FloatingTopBar';
 import FloatingBottomBar from '../components/FloatingBottomBar/FloatingBottomBar';
 import { FLOATING_BOTTOM_BAR_ITEMS } from '../components/FloatingBottomBar/FloatingBottomBar.types';
+
+import SearchButton from '../components/Home/PrimaryFilter/SearchButton/SearchButton.types';
 import PrimaryFilter from '../components/Home/PrimaryFilter/PrimaryFilter';
 import SearchBar from '../components/Home/PrimaryFilter/SearchBar/SearchBar.types';
 
@@ -26,6 +28,7 @@ const Home: React.FC = () => {
   const [gameCards, setGameCards] = useState<GameCard[]>([]);
   const [gameCardsByTag, setGameCardsByTag] = useState<GameCard[]>([]);
   const [gameCardsByName, setGameCardsByName] = useState<GameCard[]>([]);
+  const [searchBarVisible, setSearchBarVisible] = useState(false);
 
   // Fetches all game cards without any filters
   const fetchGameCards = async () => {
@@ -92,11 +95,19 @@ const Home: React.FC = () => {
     fetchGameCardsByProvider(providerName);
   };
 
+  const onSearchButtonClick = () => {
+    setSearchBarVisible(!searchBarVisible);
+  };
+
   const onSearch = (searchText: string) => {
     if (searchText === '') {
       return;
     }
     fetchGameCardsByName(searchText);
+  };
+
+  const searchButton: SearchButton = {
+    onClick: onSearchButtonClick
   };
 
   const tagFilter: TagFilter = {
@@ -108,7 +119,8 @@ const Home: React.FC = () => {
 
   const searchBar: SearchBar = {
     onSearch: onSearch,
-    results: gameCardsByName
+    results: gameCardsByName,
+    isVisible: searchBarVisible
   };
 
   return (
@@ -116,7 +128,7 @@ const Home: React.FC = () => {
       <FloatingTopBar />
       <BannerCarrousel banners={BANNERS} />
       <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
-      <PrimaryFilter searchBar={searchBar} tagFilter={tagFilter} />
+      <PrimaryFilter searchButton={searchButton} searchBar={searchBar} tagFilter={tagFilter} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />
       <Body body={BODY_TEXT} />
       <FloatingBottomBar items={FLOATING_BOTTOM_BAR_ITEMS} />

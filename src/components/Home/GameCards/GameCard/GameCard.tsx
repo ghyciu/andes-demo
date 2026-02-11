@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const GameCard: React.FC<GameCardProps> = gameCardProps => {
+  const navigate = useNavigate();
   const [isFavorited, setIsFavorited] = React.useState(gameCardProps.isFavorited);
 
   // Adds game card ID to favorites list in local storage
@@ -23,7 +25,16 @@ const GameCard: React.FC<GameCardProps> = gameCardProps => {
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };
 
-  const handleClick = () => {
+  const handleCardClick = () => {
+    if (!gameCardProps.href) {
+      return;
+    }
+
+    navigate(gameCardProps.href);
+  };
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (!isFavorited) {
       setIsFavorited(true);
       addToLocalStorage();
@@ -34,9 +45,9 @@ const GameCard: React.FC<GameCardProps> = gameCardProps => {
   };
 
   return (
-    <div className={styles.gameCard}>
+    <div className={styles.gameCard} onClick={handleCardClick}>
       <img src={gameCardProps.imageURL} alt={gameCardProps.name} />
-      <FontAwesomeIcon icon={isFavorited ? faHeartSolid : faHeart} className={`${styles.heartIcon} ${isFavorited ? styles.favorited : ''}`} onClick={handleClick} />
+      <FontAwesomeIcon icon={isFavorited ? faHeartSolid : faHeart} className={`${styles.heartIcon} ${isFavorited ? styles.favorited : ''}`} onClick={handleFavoriteClick} />
     </div>
   );
 };
