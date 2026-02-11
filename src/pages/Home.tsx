@@ -5,7 +5,7 @@ import { BANNERS } from '../components/Home/BannerCarrousel/Banner.types';
 
 import GameCards from '../components/Home/GameCards/GameCards';
 import GameCard from '../components/Home/GameCards/GameCard/GameCard.types';
-import { getGameCards, getGameCardsByTag, getGameCardsByTagAndProvider } from '../utils/getGameCards';
+import { getGameCards, getGameCardsByName, getGameCardsByTag, getGameCardsByTagAndProvider } from '../utils/getGameCards';
 
 import ProviderFilter from '../components/Home/ProviderFilter/ProviderFilter';
 import { PROVIDERS, ProviderName } from '../components/Home/Provider.types';
@@ -18,12 +18,14 @@ import FloatingTopBar from '../components/FloatingTopBar/FloatingTopBar';
 import FloatingBottomBar from '../components/FloatingBottomBar/FloatingBottomBar';
 import { FLOATING_BOTTOM_BAR_ITEMS } from '../components/FloatingBottomBar/FloatingBottomBar.types';
 import PrimaryFilter from '../components/Home/PrimaryFilter/PrimaryFilter';
+import SearchBar from '../components/Home/PrimaryFilter/SearchBar/SearchBar.types';
 
 const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTag, setSelectedTag] = useState<TagName | null>(null);
   const [gameCards, setGameCards] = useState<GameCard[]>([]);
   const [gameCardsByTag, setGameCardsByTag] = useState<GameCard[]>([]);
+  const [gameCardsByName, setGameCardsByName] = useState<GameCard[]>([]);
 
   // Fetches all game cards without any filters
   const fetchGameCards = async () => {
@@ -51,6 +53,14 @@ const Home: React.FC = () => {
     getGameCardsByTagAndProvider(selectedTag, providerName).then((data: GameCard[]) => {
       setGameCards(data);
       setIsLoading(false);
+    });
+  };
+
+  // Fetches game cards by name
+  const fetchGameCardsByName = async (name: string) => {
+    getGameCardsByName(name).then((data: GameCard[]) => {
+      setGameCardsByName(data);
+      console.log(data);
     });
   };
 
@@ -82,6 +92,13 @@ const Home: React.FC = () => {
     fetchGameCardsByProvider(providerName);
   };
 
+  const onSearch = (searchText: string) => {
+    if (searchText === '') {
+      return;
+    }
+    fetchGameCardsByName(searchText);
+  };
+
   const tagFilter: TagFilter = {
     tags: TAGS,
     count: gameCards.length,
@@ -89,12 +106,17 @@ const Home: React.FC = () => {
     onTagSelect: onTagSelect
   };
 
+  const searchBar: SearchBar = {
+    onSearch: onSearch,
+    results: gameCardsByName
+  };
+
   return (
     <div className="root-home">
       <FloatingTopBar />
       <BannerCarrousel banners={BANNERS} />
       <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
-      <PrimaryFilter tagFilter={tagFilter} />
+      <PrimaryFilter searchBar={searchBar} tagFilter={tagFilter} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />
       <Body body={BODY_TEXT} />
       <FloatingBottomBar items={FLOATING_BOTTOM_BAR_ITEMS} />

@@ -41,6 +41,7 @@ function mapJsonToGameCard(json: any): GameCard {
     imageURL: json.imageURL || './images/default.png',
     provider: provider,
     tags: tags,
+    href: json.href || '/unknown-game',
     isFavorited: isFavorited
   } as GameCard;
 }
@@ -51,7 +52,7 @@ const LOADING_DELAY_MS = 200;
 export function getGameCards(): Promise<GameCard[]> {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve((gameCardsData as any[]).map(mapJsonToGameCard));
+      resolve((gameCardsData as GameCard[]).map(mapJsonToGameCard));
     }, LOADING_DELAY_MS);
   });
 }
@@ -60,7 +61,7 @@ export function getGameCards(): Promise<GameCard[]> {
 export function getGameCardsByTag(tagName: TagName): Promise<GameCard[]> {
   return new Promise(resolve => {
     setTimeout(() => {
-      const filteredCards = (gameCardsData as any[]).filter(card => card.tags.includes(tagName));
+      const filteredCards = (gameCardsData as GameCard[]).filter(card => card.tags.includes(tagName));
       resolve(filteredCards.map(mapJsonToGameCard));
     }, LOADING_DELAY_MS);
   });
@@ -70,10 +71,23 @@ export function getGameCardsByTag(tagName: TagName): Promise<GameCard[]> {
 export function getGameCardsByTagAndProvider(tagName: TagName | null, providerName: ProviderName): Promise<GameCard[]> {
   return new Promise(resolve => {
     setTimeout(() => {
-      const filteredCards = (gameCardsData as any[]).filter(card => {
+      const filteredCards = (gameCardsData as GameCard[]).filter(card => {
         const matchesTag = tagName ? card.tags.includes(tagName) : true;
         const matchesProvider = card.provider === providerName;
         return matchesTag && matchesProvider;
+      });
+      resolve(filteredCards.map(mapJsonToGameCard));
+    }, LOADING_DELAY_MS);
+  });
+}
+
+// Simulates an asynchronous fetch of game cards filtered by name
+export function getGameCardsByName(name: string): Promise<GameCard[]> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const lowercaseName = name.toLowerCase();
+      const filteredCards = (gameCardsData as GameCard[]).filter(card => {
+        return card.name && card.name.toLowerCase().includes(lowercaseName);
       });
       resolve(filteredCards.map(mapJsonToGameCard));
     }, LOADING_DELAY_MS);
