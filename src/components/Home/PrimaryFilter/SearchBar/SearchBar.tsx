@@ -6,10 +6,17 @@ import React, { useRef, useEffect } from 'react';
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch, results, isVisible }) => {
   const [searchResultsVisible, setSearchResultsVisible] = useState(false);
+  const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    onSearch(e.target.value);
-    setSearchResultsVisible(true);
+    const value = e.target.value;
+    if (debounceTimeout.current) {
+      clearTimeout(debounceTimeout.current);
+    }
+    debounceTimeout.current = setTimeout(() => {
+      onSearch(value);
+      setSearchResultsVisible(true);
+    }, 2000);
   };
 
   const handleFocus = () => {
