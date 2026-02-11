@@ -127,7 +127,7 @@ const Home: React.FC = () => {
     <div className="root-home">
       <FloatingTopBar />
       <BannerCarrousel banners={BANNERS} />
-      <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} />
+      <ProviderFilter providers={PROVIDERS} gameCards={gameCardsByTag} onProviderSelect={onProviderSelect} selectedTag={selectedTag} />
       <PrimaryFilter searchButton={searchButton} searchBar={searchBar} tagFilter={tagFilter} />
       <GameCards gameCards={gameCards} isLoading={isLoading} />
       <Body body={BODY_TEXT} />

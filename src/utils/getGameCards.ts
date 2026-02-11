@@ -46,7 +46,7 @@ function mapJsonToGameCard(json: any): GameCard {
   } as GameCard;
 }
 
-const LOADING_DELAY_MS = 200;
+const LOADING_DELAY_MS = 500;
 
 // Simulates an asynchronous fetch of all game cards data
 export function getGameCards(): Promise<GameCard[]> {
