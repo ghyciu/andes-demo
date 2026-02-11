@@ -1,16 +1,17 @@
 .bannerCarrousel {
   display: flex;
   position: relative;
-  height: 10rem;
+  height: 20%;
   width: calc(100% - 2rem);
   overflow: hidden;
   border-radius: 0.5rem;
   background: #f5f5f5;
-  margin: 60px 1rem 0.5rem 1rem;
+  margin: 0.5rem 1rem 0.5rem 1rem;
 }
 
 .banner {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

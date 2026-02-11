@@ -7,3 +7,21 @@
   --accent-color-filter: invert(41%) sepia(58%) saturate(2326%) hue-rotate(177deg) brightness(107%) contrast(102%);
   --green: #41bc2c;
 }
+
+.root-home {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.placeholder {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.placeholder h1 {
+  line-height: 1;
+  padding: 0;
+}

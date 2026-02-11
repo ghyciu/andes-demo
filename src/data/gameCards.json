@@ -5,7 +5,7 @@
     "imageURL": "/assets/images/thumb/gameA.webp",
     "provider": "Provider A",
     "tags": ["New", "Popular", "Slots"],
-    "href": "/games/A"
+    "href": "/A"
   },
   {
     "id": "gameB",
@@ -13,7 +13,7 @@
     "imageURL": "/assets/images/thumb/gameB.webp",
     "provider": "Provider A",
     "tags": ["New", "Popular", "Bingo"],
-    "href": "/games/B"
+    "href": "/B"
   },
   {
     "id": "gameC",
@@ -21,7 +21,7 @@
     "imageURL": "/assets/images/thumb/gameC.webp",
     "provider": "Provider B",
     "tags": ["Popular", "Slots"],
-    "href": "/games/C"
+    "href": "/C"
   },
   {
     "id": "gameD",
@@ -29,7 +29,7 @@
     "imageURL": "/assets/images/thumb/gameD.webp",
     "provider": "Provider B",
     "tags": ["Popular", "Bingo"],
-    "href": "/games/D"
+    "href": "/D"
   },
   {
     "id": "gameE",
@@ -37,7 +37,7 @@
     "imageURL": "/assets/images/thumb/gameE.webp",
     "provider": "Provider C",
     "tags": ["Slots"],
-    "href": "/games/E"
+    "href": "/E"
   },
   {
     "id": "gameF",
@@ -45,6 +45,6 @@
     "imageURL": "/assets/images/thumb/gameF.webp",
     "provider": "Provider C",
     "tags": ["Bingo"],
-    "href": "/games/F"
+    "href": "/F"
   }
 ]
